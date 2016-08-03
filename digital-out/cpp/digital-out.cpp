@@ -26,7 +26,10 @@
  * Demonstrate how to write a digital value to an output pin using the MRAA
  * library.
  * A suitable part to use this example with in the Grove Starter Kit is the LED.
- * Output connected to digital pin 8 (Grove Base Shield Port D8)
+ * Output connected to digital pin 8 (Grove Base Shield Port D8). For the connection to the
+ * Grosse Tete connect digital pin 8 to pin 8 on Breakout#1 (of the Grosse
+ * Tete). Futhermore, connect 3v3 and GND Pin to Pin 40 on Breakout#1
+ * and Pin 1 of Breakout#2.
  */
 
 #include <mraa.hpp>
@@ -38,12 +41,13 @@ int main()
 {
 	// check that we are running on Galileo or Edison
 	mraa::Platform platform = mraa::getPlatformType();
-	if((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return mraa::ERROR_INVALID_PLATFORM;
-	}
+		if ((platform != mraa::INTEL_GALILEO_GEN1) &&
+		    (platform != mraa::INTEL_GALILEO_GEN2) &&
+		    (platform != mraa::INTEL_EDISON_FAB_C) &&
+		    (platform != mraa::INTEL_GT_TUCHUCK)) {
+		   std::cerr << "Unsupported platform, exiting" << std::endl;
+	           return mraa::ERROR_INVALID_PLATFORM;
+		}
 
 	// create a gpio object from MRAA using pin 8
 	mraa::Gpio* d_pin = new mraa::Gpio(8);
@@ -53,13 +57,13 @@ int main()
 	}
 
 	// set the pin as output
-	if (d_pin->dir(mraa::DIR_IN) != mraa::SUCCESS) {
+	if (d_pin->dir(mraa::DIR_OUT) != mraa::SUCCESS) {
 		std::cerr << "Can't set digital pin as output, exiting" << std::endl;
 		return mraa::ERROR_UNSPECIFIED;
 	}
 
 	// loop forever toggling the digital output every second
-	for(;;) {
+	for (;;) {
 		d_pin->write(0);
 		sleep(1);
 		d_pin->write(1);
@@ -68,3 +72,4 @@ int main()
 
 	return mraa::SUCCESS;
 }
+
