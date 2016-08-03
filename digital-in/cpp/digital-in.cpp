@@ -1,5 +1,4 @@
-/*
- * Author: Ivan De Cesaris <ivan.de.cesaris@intel.com>
+/* Author: Ivan De Cesaris <ivan.de.cesaris@intel.com>
  * Copyright (c) 2015 - 2016 Intel Corporation.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -26,7 +25,10 @@
  * Demonstrate how to read a digital value from an input pin using the MRAA
  * library.
  * Suitable ones in the Grove Starter Kit are the Button and Touch Sensor,
- * connected to digital pin 4 (Grove Base Shield Port D4).
+ * connected to digital pin 4 (Grove Base Shield Port D4). For the connection to the
+ * Grosse Tete connect digital pin 4 (Grove Base Shield) to pin 4 on Breakout#1 (of the Grosse
+ * Tete). Futhermore, connect 3v3 and GND Pin to pin 40 on Breakout#1
+ * and pin 1 of Breakout#2.
  */
 
 #include <mraa.hpp>
@@ -39,10 +41,11 @@ int main()
 	// check that we are running on Galileo or Edison
 	mraa::Platform platform = mraa::getPlatformType();
 	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return mraa::ERROR_INVALID_PLATFORM;
+	    (platform != mraa::INTEL_GALILEO_GEN2) &&
+	    (platform != mraa::INTEL_EDISON_FAB_C) &&
+	    (platform != mraa::INTEL_GT_TUCHUCK)) {
+	   std::cerr << "Unsupported platform, exiting" << std::endl;
+	   return mraa::ERROR_INVALID_PLATFORM;
 	}
 
 	// create a GPIO object from MRAA using pin 4
@@ -67,3 +70,4 @@ int main()
 
 	return mraa::SUCCESS;
 }
+
