@@ -34,7 +34,11 @@
  * Any button or sensor that can generate a voltage transition from ground to
  * Vcc or viceversa can be used with this example code.
  * Suitable ones in the Grove Starter Kit are the Button and Touch Sensor,
- * connected to digital pin 4 (Grove Base Shield Port D4)
+ * connected to digital pin 4 (Grove Base Shield Port D4). 
+ * For the connection to the Grosse Tete connect the digital pin 4 (Grove Base Shield) 
+ * to the pin 1 on Breakout#1 (Grosse Tete). Futhermore, connect the 3v3 Pin and 
+ * GND Pin (Grove Base Shield) to Pin 40 on Breakout#1 and Pin 1 on Breakout#2 
+ * (Grosse Tete).
  *
  * @date 29/09/2015
  */
@@ -54,17 +58,24 @@ void interrupt(void * args) {
 
 int main()
 {
-	// check that we are running on Galileo or Edison
+	// select onboard LED pin based on the platform type
+	// create a GPIO object from MRAA using it
 	mraa::Platform platform = mraa::getPlatformType();
-	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return mraa::ERROR_INVALID_PLATFORM;
-	}
+	mraa::Gpio* d_pin = NULL;
+		switch (platform) {
+			case mraa::INTEL_GALILEO_GEN1:
+			case mraa::INTEL_GALILEO_GEN2:
+			case mraa::INTEL_EDISON_FAB_C:
+				d_pin = new mraa::Gpio(4);
+				break;
+			case mraa::INTEL_GT_TUCHUCK:
+				d_pin = new mraa::Gpio(1);
+				break;
+			default:
+				std::cerr << "Unsupported platform, exiting" << std::endl;
+				return mraa::ERROR_INVALID_PLATFORM;
+		}
 
-	// create a GPIO object from MRAA using pin 4
-	mraa::Gpio* d_pin = new mraa::Gpio(4);
 	if (d_pin == NULL) {
 		std::cerr << "Can't create mraa::Gpio object, exiting" << std::endl;
 		return mraa::ERROR_UNSPECIFIED;
@@ -91,3 +102,4 @@ int main()
 
 	return mraa::SUCCESS;
 }
+
