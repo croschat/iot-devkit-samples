@@ -26,11 +26,11 @@
  * Demonstrate how to read a digital value from an input pin using the MRAA
  * library.
  * Suitable ones in the Grove Starter Kit are the Button and Touch Sensor,
- * connected to digital pin 4 (Grove Base Shield Port D4). 
- * For the connection to the Grosse Tête connect the Pin 4 (Grove Base Shield) 
- * to the Pin 1 on Breakout#1 (Grosse Tête). Futhermore, connect the 3v3 Pin and 
- * GND Pin (Grove Base Shield)  to Pin 40 on Breakout#1 and Pin 1 on Breakout#2 
- * (Grosse Tête).
+ * connected to digital pin 4 (Grove Base Shield Port D4).
+ * For the connection to the Grosse Tete connect the Pin 4 (Grove Base Shield)
+ * to the Pin 4 on Breakout#1 (Grosse Tete). Futhermore, connect the 3v3 Pin and
+ * GND Pin (Grove Base Shield) to Pin 40 on Breakout#1 and Pin 1 on Breakout#2
+ * (Grosse Tete).
  */
 
 #include <mraa.hpp>
@@ -43,11 +43,11 @@ int main()
 	// check that we are running on Galileo or Edison
 	mraa::Platform platform = mraa::getPlatformType();
 	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C) &&
-			 (platform != mraa::INTEL_GT_TUCHUCK)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return mraa::ERROR_INVALID_PLATFORM;
+	    (platform != mraa::INTEL_GALILEO_GEN2) &&
+	    (platform != mraa::INTEL_EDISON_FAB_C) &&
+            (platform != mraa::INTEL_GT_TUCHUCK)) {
+	   std::cerr << "Unsupported platform, exiting" << std::endl;
+	   return mraa::ERROR_INVALID_PLATFORM;
 	}
 
 	// create a GPIO object from MRAA using pin 4
