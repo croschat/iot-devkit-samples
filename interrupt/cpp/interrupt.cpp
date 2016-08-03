@@ -62,19 +62,19 @@ int main()
 	// create a GPIO object from MRAA using it
 	mraa::Platform platform = mraa::getPlatformType();
 	mraa::Gpio* d_pin = NULL;
-		switch (platform) {
-			case mraa::INTEL_GALILEO_GEN1:
-			case mraa::INTEL_GALILEO_GEN2:
-			case mraa::INTEL_EDISON_FAB_C:
-				d_pin = new mraa::Gpio(4);
-				break;
-			case mraa::INTEL_GT_TUCHUCK:
-				d_pin = new mraa::Gpio(1);
-				break;
-			default:
-				std::cerr << "Unsupported platform, exiting" << std::endl;
-				return mraa::ERROR_INVALID_PLATFORM;
-		}
+	switch (platform) {
+		case mraa::INTEL_GALILEO_GEN1:
+		case mraa::INTEL_GALILEO_GEN2:
+		case mraa::INTEL_EDISON_FAB_C:
+			d_pin = new mraa::Gpio(4);
+			break;
+		case mraa::INTEL_GT_TUCHUCK:
+			d_pin = new mraa::Gpio(1);
+			break;
+		default:
+			std::cerr << "Unsupported platform, exiting" << std::endl;
+			return mraa::ERROR_INVALID_PLATFORM;
+	}
 
 	if (d_pin == NULL) {
 		std::cerr << "Can't create mraa::Gpio object, exiting" << std::endl;
