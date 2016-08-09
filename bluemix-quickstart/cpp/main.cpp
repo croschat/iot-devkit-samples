@@ -130,15 +130,6 @@ void connection_lost(void * context, char* cause)
 
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa::Platform platform = mraa::getPlatformType();
-	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return mraa::ERROR_INVALID_PLATFORM;
-	}
-
 	// create the MQTT client
 	int rc = 0;
 	rc = MQTTClient_create(&client, const_cast<char *>(host),

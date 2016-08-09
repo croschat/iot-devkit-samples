@@ -38,14 +38,6 @@
 
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa_platform_t platform = mraa_get_platform_type();
-	if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-			(platform != MRAA_INTEL_GALILEO_GEN2) &&
-			(platform != MRAA_INTEL_EDISON_FAB_C)) {
-		std::cerr << "Unsupported platform, exiting" << std::endl;
-		return MRAA_ERROR_INVALID_PLATFORM;
-	}
 
 	// create an analog input object from MRAA using pin A0
 	mraa::Aio* a_pin = new mraa::Aio(0);

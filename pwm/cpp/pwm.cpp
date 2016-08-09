@@ -36,15 +36,6 @@
  */
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa::Platform platform = mraa::getPlatformType();
-	if ((platform != mraa::INTEL_GALILEO_GEN1)
-	    && (platform != mraa::INTEL_GALILEO_GEN2)
-	    && (platform != mraa::INTEL_EDISON_FAB_C)) {
-	  std::cerr << "Unsupported platform, exiting" << std::endl;
-	  return mraa::ERROR_INVALID_PLATFORM;
-	}
-
 	// create a GPIO object from MRAA using pin 6
 	// note that not all digital pins can be used for PWM, the available ones
 	// are usually marked with a ~ on the board's silk screen

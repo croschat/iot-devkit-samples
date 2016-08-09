@@ -121,15 +121,6 @@ int fire_alert() {
 
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa::Platform platform = mraa::getPlatformType();
-	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-			(platform != mraa::INTEL_GALILEO_GEN2) &&
-			(platform != mraa::INTEL_EDISON_FAB_C)) {
-		fprintf(stderr, "Unsupported platform, exiting");
-		return mraa::ERROR_INVALID_PLATFORM;
-	}
-
 	// initialize the buzzer
 	buzzer = new upm::Buzzer(5);
 	if (buzzer == NULL) {

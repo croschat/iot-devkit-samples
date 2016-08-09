@@ -220,15 +220,6 @@ void check_lux(upm::GroveLight *light_sensor, upm::Jhd1313m1 *lcd,
 }
 
 int main() {
-  // Check that we are running on Galileo or Edison
-  mraa::Platform platform = mraa::getPlatformType();
-  if ((platform != mraa::INTEL_GALILEO_GEN1)
-      && (platform != mraa::INTEL_GALILEO_GEN2)
-      && (platform != mraa::INTEL_EDISON_FAB_C)) {
-    std::cerr << "Unsupported platform, exiting" << std::endl;
-    return mraa::ERROR_INVALID_PLATFORM;
-  }
-
   /*
    * System can be in two states:
    * - CONFIG: A lux target can be specified from the user.

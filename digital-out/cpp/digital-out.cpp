@@ -40,16 +40,6 @@
 
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa::Platform platform = mraa::getPlatformType();
-	if ((platform != mraa::INTEL_GALILEO_GEN1) &&
-	    (platform != mraa::INTEL_GALILEO_GEN2) &&
-	    (platform != mraa::INTEL_EDISON_FAB_C) &&
-            (platform != mraa::INTEL_GT_TUCHUCK)) {
-	   std::cerr << "Unsupported platform, exiting" << std::endl;
-	   return mraa::ERROR_INVALID_PLATFORM;
-	}
-
 	// create a gpio object from MRAA using pin 8
 	mraa::Gpio* d_pin = new mraa::Gpio(8);
 	if(d_pin == NULL) {

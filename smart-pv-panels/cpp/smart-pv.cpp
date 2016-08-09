@@ -148,15 +148,6 @@ void solarTracker(upm::Jhd1313m1* lcd, upm::GroveLight* lightL,
 }
 
 int main() {
-  // Check that we are running on Galileo or Edison
-  mraa::Platform platform = mraa::getPlatformType();
-  if ((platform != mraa::INTEL_GALILEO_GEN1)
-      && (platform != mraa::INTEL_GALILEO_GEN2)
-      && (platform != mraa::INTEL_EDISON_FAB_C)) {
-    std::cerr << "Unsupported platform, exiting" << std::endl;
-    return mraa::ERROR_INVALID_PLATFORM;
-  }
-
   // LCD screen object (the lcd is connected to I2C port, bus 0)
   upm::Jhd1313m1 *lcd = new upm::Jhd1313m1(0);
 
