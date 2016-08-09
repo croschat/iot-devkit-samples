@@ -15,5 +15,11 @@
          "mraa",
          "upm"
       ]
+	  "compatible":[
+	     "Gateway 64-Bit", 
+	     "Gateway 32-Bit", 
+	     "MinnowBoard MAX",
+	     "Edison"
+	  ]
    }
 }
