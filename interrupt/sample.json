@@ -1,12 +1,18 @@
-{
-  "name": "Interrupt service routine (ISR)",
-  "category": "Grove Starter Kit",
-  "description": "Demonstrate how to react on an external event with an ISR (Interrupt Service Routine), which will run independently of the main program flow using the MRAA library.",
-  "author": "Intel Corporation",
-  "date": "2016-09-29",
-  "platform" : {
-    "hwreq" : ["Input connected to digital pin 4 (Grove Base Shield Port D4)"],
-    "libs": ["mraa"],
-    "compatible": []
+{  
+  "name":"Interrupt service routine (ISR)",
+  "category":"Grove Starter Kit",
+  "description":"Demonstrate how to react on an external event with an ISR (Interrupt Service Routine), which will run independently of the main program flow using the MRAA library.",
+  "author":"Intel Corporation",
+  "date":"2016-09-29",
+  "platform":{  
+    "hwreq":[  
+      "Input connected to digital pin 4 (Grove Base Shield Port D4)"
+    ],
+    "libs":[  
+      "mraa"
+    ],
+    "compatible":[  
+
+    ]
   }
 }
