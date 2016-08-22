@@ -108,7 +108,6 @@ void solarTracker(upm::Jhd1313m1* lcd, upm::GroveLight* lightL,
 
   // 1)
   if ((lightLST < THRESHOLD) && (lightRST) < THRESHOLD) {
-
     // Lightless state
     lcd->setCursor(0, 0);
     lcd->write("No sun");
@@ -116,7 +115,6 @@ void solarTracker(upm::Jhd1313m1* lcd, upm::GroveLight* lightL,
 
     // 2)
   } else if (lightLST < lightLAVG) {
-
     // a)
     if (lightLST < lightRST) {
       // Rotating 1/32 revolution clockwise
@@ -131,7 +129,6 @@ void solarTracker(upm::Jhd1313m1* lcd, upm::GroveLight* lightL,
 
     // 3)
   } else if (lightRST < lightRAVG) {
-
     // a)
     if (lightRST < lightLST) {
       // Rotating 1/32 revolution counter clockwise
@@ -147,7 +144,8 @@ void solarTracker(upm::Jhd1313m1* lcd, upm::GroveLight* lightL,
   sleep(1);
 }
 
-int main() {
+int main() 
+{
   // LCD screen object (the lcd is connected to I2C port, bus 0)
   upm::Jhd1313m1 *lcd = new upm::Jhd1313m1(0);
 

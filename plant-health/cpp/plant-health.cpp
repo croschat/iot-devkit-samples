@@ -78,7 +78,7 @@
  * Warning conditions are signaled by a red LCD background.
  */
 void monitor_plant_conditions(upm::GroveMoisture *moisture_sensor,
-    upm::GroveTemp *temp_sensor, upm::GUVAS12D *UV_sensor,
+		upm::GroveTemp *temp_sensor, upm::GUVAS12D *UV_sensor,
     upm::GroveRelay *dry_Reed_relay, upm::Jhd1313m1 *lcd) {
   std::stringstream row_1, row_2; // LCD rows
 
@@ -92,7 +92,6 @@ void monitor_plant_conditions(upm::GroveMoisture *moisture_sensor,
   float intensity = raw_uvIntensity * GUVA_RAW_TO_INTENSITY_COEFF;
 
   // In case of dry soil, activate the pump for a fixed time
-
   if (moisture < MOISTURE_MIN_THRESHOLD) {
     lcd->setColor(LIGHT_STEEL_BLUE);
 
@@ -109,7 +108,6 @@ void monitor_plant_conditions(upm::GroveMoisture *moisture_sensor,
   }
 
   // If any of the measured parameters is out of range, display it in red
-
   if (temperature < TEMP_MIN_THRESHOLD || temperature > TEMP_MAX_THRESHOLD
       || intensity < UV_MIN_THRESHOLD) {
     lcd->setColor(RED);
@@ -128,7 +126,8 @@ void monitor_plant_conditions(upm::GroveMoisture *moisture_sensor,
   lcd->write(row_2.str());
 }
 
-int main() {
+int main() 
+{
   // Moisture sensor connected to A0 (analog in)
   upm::GroveMoisture* moisture_sensor = new upm::GroveMoisture(0);
 
@@ -147,13 +146,13 @@ int main() {
   // Simple error checking
   if ((moisture_sensor == NULL) || (temp_sensor == NULL) || (UV_sensor == NULL)
       || (dry_Reed_relay == NULL) || (lcd == NULL)) {
-    std::cerr << "Can't create all objects, exiting" << std::endl;
+  	std::cerr << "Can't create all objects, exiting" << std::endl;
     return mraa::ERROR_UNSPECIFIED;
   }
 
   for (;;) {
-    monitor_plant_conditions(moisture_sensor, temp_sensor, UV_sensor,
-        dry_Reed_relay, lcd);
+		monitor_plant_conditions(moisture_sensor, temp_sensor, UV_sensor,
+    		dry_Reed_relay, lcd);
     sleep(15);
   }
 

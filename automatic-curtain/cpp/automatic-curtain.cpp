@@ -100,18 +100,18 @@ static int stepper_motor_current_step = 0;
  * @return Lux value setted by the user through rotary angle sensor.
  */
 int setup_lux_target(upm::GroveRotary *rotary_sensor,
-    upm::GroveLight *light_sensor, upm::GroveButton *button,
+		upm::GroveLight *light_sensor, upm::GroveButton *button,
     upm::Jhd1313m1 *lcd) {
   int lux_target = 0;
   bool confirmed = false;
 
   while (!confirmed) {
-    /*
+		/*
      * Rotary_sensor->abs_deg() in within the interval [0-300].
      * Dividing Rotary_sensor->abs_deg() by 6 interval [0-60] is
      * obtained.
      */
-    lux_target = rotary_sensor->abs_deg() / 5;
+		lux_target = rotary_sensor->abs_deg() / 5;
     string lux_target_str = static_cast<ostringstream *>(&(ostringstream()
         << lux_target))->str();
     lcd->clear();
@@ -138,7 +138,7 @@ int setup_lux_target(upm::GroveRotary *rotary_sensor,
  * @param lux_current Lux current value.
  */
 void show_on_lcd(upm::Jhd1313m1 *lcd, int lux_target, int lux_current) {
-  stringstream row_1, row_2; //LCD rows
+	stringstream row_1, row_2; //LCD rows
   row_1 << "Lux Current: " << lux_current;
   row_2 << "Lux Target:  " << lux_target;
   lcd->clear();
@@ -196,8 +196,7 @@ bool open_curtain(upm::ULN200XA *uln200xa) {
  * @param lux_target  Lux target value.
  */
 void check_lux(upm::GroveLight *light_sensor, upm::Jhd1313m1 *lcd,
-    upm::ULN200XA *uln200xa, int lux_target) {
-
+		upm::ULN200XA *uln200xa, int lux_target) {
   int lux_current;
   // Get current lux value sensed by the light sensor.
   lux_current = light_sensor->value();
@@ -219,7 +218,8 @@ void check_lux(upm::GroveLight *light_sensor, upm::Jhd1313m1 *lcd,
   }
 }
 
-int main() {
+int main() 
+{
   /*
    * System can be in two states:
    * - CONFIG: A lux target can be specified from the user.
@@ -256,8 +256,8 @@ int main() {
 
   // Simple error checking
   if ((rotary_sensor == NULL) || (light_sensor == NULL) || (button == NULL)
-      || (uln200xa == NULL) || (lcd == NULL)) {
-    cerr << "Can't create all objects, exiting" << endl;
+			|| (uln200xa == NULL) || (lcd == NULL)) {
+		cerr << "Can't create all objects, exiting" << endl;
     return mraa::ERROR_UNSPECIFIED;
   }
 

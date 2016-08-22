@@ -69,8 +69,7 @@ upm::Buzzer * buzzer;
  * @param device_client A handle of the device client
  * @param app_client A handle of the application client
  */
-int detect_flame(Device_client * device_client, App_client * app_client)
-{
+int detect_flame(Device_client * device_client, App_client * app_client) {
 	upm::YG1006 flameSensor = upm::YG1006(3);
 
 	/* Code in this loop will run repeatedly
@@ -121,12 +120,12 @@ int fire_alert() {
 
 int main()
 {
-	// initialize the buzzer
+  // initialize the buzzer
 	buzzer = new upm::Buzzer(5);
 	if (buzzer == NULL) {
 		fprintf(stderr, "Buzzer not initialized");
 		return mraa::ERROR_INVALID_HANDLE;
-	}
+}
 
 	// initialize the device client
 	Device_client device_client = Device_client(fire_alert);

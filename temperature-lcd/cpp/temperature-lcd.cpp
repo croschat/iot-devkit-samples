@@ -53,8 +53,7 @@
 #include <unistd.h>
 
 void temperature_update(upm::GroveTemp* temperature_sensor, upm::GroveButton* button,
-		upm::GroveLed* led, upm::Jhd1313m1 *lcd)
-{
+		upm::GroveLed* led, upm::Jhd1313m1 *lcd) {
 	// minimum and maximum temperatures registered, the initial values will be
 	// replaced after the first read
 	static int min_temperature = INT_MAX;

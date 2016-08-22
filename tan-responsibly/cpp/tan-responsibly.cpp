@@ -107,7 +107,6 @@ void check_warning_conditions(upm::GUVAS12D *UV_sensor,
   lcd->write(row_2.str());
 
   // Color the display according UV index safety
-
   if (uvIndex <= 2) {
     lcd->setColor(LIME_GREEN);
   } else if (uvIndex > 2 && uvIndex <= 5) {
@@ -126,7 +125,8 @@ void check_warning_conditions(upm::GUVAS12D *UV_sensor,
 
 }
 
-int main() {
+int main() 
+{
   // UV sensor connected to A0 (analog in)
   upm::GUVAS12D *UV_sensor = new upm::GUVAS12D(0);
 

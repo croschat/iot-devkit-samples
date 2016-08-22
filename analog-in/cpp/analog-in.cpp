@@ -23,7 +23,7 @@
  */
 
 /**
-* 
+ *
  * Demonstrate how to read an analog voltage value from an input pin using the
  * MRAA library, any sensor that outputs a variable voltage can be used with
  * this example code.
@@ -36,22 +36,21 @@
 #include <iostream>
 #include <unistd.h>
 
-int main()
+int main() 
 {
-
 	// create an analog input object from MRAA using pin A0
-	mraa::Aio* a_pin = new mraa::Aio(0);
-	if (a_pin == NULL) {
-		std::cerr << "Can't create mraa::Aio object, exiting" << std::endl;
-		return MRAA_ERROR_UNSPECIFIED;
-	}
+  mraa::Aio* a_pin = new mraa::Aio(0);
+  if (a_pin == NULL) {
+    std::cerr << "Can't create mraa::Aio object, exiting" << std::endl;
+    return MRAA_ERROR_UNSPECIFIED;
+  }
 
-	// loop forever printing the input value every second
-	for (;;) {
+  // loop forever printing the input value every second
+  for (;;) {
 		uint16_t pin_value = a_pin->read();
-		std::cout << "analog input value " << pin_value << std::endl;
-		sleep(1);
-	}
+    std::cout << "analog input value " << pin_value << std::endl;
+    sleep(1);
+  }
 
-	return MRAA_SUCCESS;
+  return MRAA_SUCCESS;
 }

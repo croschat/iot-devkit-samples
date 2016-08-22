@@ -55,7 +55,8 @@
  * it to the led bar
  */
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
   // Threshold context for the sound sensor
   thresholdContext ctx;
 
@@ -82,7 +83,6 @@ int main(int argc, char **argv) {
   // Repeatedly acquire the average sound level and map it to led bar range
 
   for (;;) {
-
     int len = mic->getSampledWindow(1, SAMPLE_WINDOW, buffer);
 
     if (len) {
